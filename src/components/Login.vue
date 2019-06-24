@@ -27,8 +27,8 @@
             }
         },
         methods: {
-            signin() {
-                axios.post('http://localhost:9009/auth/signin', {
+            signin: function() {
+                axios.post('/auth/signin', {
                     username: this.username, password: this.password
                 }).then( response => {
                     localStorage.setItem('token', response.data.tokenType + " " + response.data.accessToken);

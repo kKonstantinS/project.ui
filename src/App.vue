@@ -1,21 +1,30 @@
 <template>
   <div>
-    <div class="container">
-      <ul class="nav nav-pills">
-        <li><a>Login</a></li>
-        <li><a v-on:click="logout">Logout</a></li>
-      </ul>
-    </div>
-    <div class="jumbotron">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 offset-sm-3">
-            <Login v-if="!isAuthenticated"></Login>
-            <Feed v-if="isAuthenticated"></Feed>
-          </div>
-        </div>
-      </div>
-    </div>
+    <b-navbar toggleable="lg" type="dark" variant="dark"
+              style="border-bottom-right-radius: 50px; border-bottom-left-radius: 50px">
+      <b-navbar-brand href="#" style="padding-left: 1%">SocNetwork</b-navbar-brand>
+
+
+      <b-collapse id="nav-collapse" is-nav>
+
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto">
+          <b-col sm="15" style="padding-right: 4%">
+            <b-form-input id="input-small"  placeholder="Search"></b-form-input>
+          </b-col>
+
+          <b-nav-item-dropdown right>
+            <template slot="button-content"><em>User</em></template>
+            <b-dropdown-item>Profile</b-dropdown-item>
+            <b-dropdown-item>Settings</b-dropdown-item>
+            <b-dropdown-item v-on:click="logout">Logout</b-dropdown-item>
+          </b-nav-item-dropdown>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+
+    <router-view></router-view>
+
   </div>
 </template>
 
@@ -24,16 +33,6 @@
   import Feed from './components/Feed.vue'
   import 'bootstrap/dist/css/bootstrap.css'
   import 'bootstrap-vue/dist/bootstrap-vue.css'
-  import axios from 'axios'
-
-  export const HTTP = axios.create({
-    baseURL: 'http://localhost:9009',
-    headers: {
-      common: {
-        Authorization: localStorage.getItem('token')
-      }
-    }
-  });
 
   export default {
     name: 'app',
