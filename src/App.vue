@@ -2,7 +2,7 @@
   <div>
     <b-navbar toggleable="lg" type="dark" variant="dark"
               style="border-bottom-right-radius: 50px; border-bottom-left-radius: 50px">
-      <b-navbar-brand href="#" style="padding-left: 1%">SocNetwork</b-navbar-brand>
+      <b-navbar-brand href="/feed" style="padding-left: 1%">SocNetwork</b-navbar-brand>
 
 
       <b-collapse id="nav-collapse" is-nav>
@@ -29,19 +29,15 @@
 </template>
 
 <script>
-  import Login from './components/Login.vue'
-  import Feed from './components/Feed.vue'
   import 'bootstrap/dist/css/bootstrap.css'
   import 'bootstrap-vue/dist/bootstrap-vue.css'
 
   export default {
     name: 'app',
-    components: {
-      Login, Feed
-    },
     methods: {
       logout() {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token');
+
       },
       isAuthenticated() {
         return localStorage.getItem('token') != null;

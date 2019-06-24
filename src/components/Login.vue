@@ -1,15 +1,15 @@
 <template>
-    <form class="col-sm-6 offset-sm-3">
+    <form class="col-sm-6 offset-sm-3" style="align-self: center">
         <div class="form-group">
             <label>Username:</label>
-            <input type="text" v-model="username"/>
+            <b-input type="text" v-model="username"/>
         </div>
         <div class="form-group">
-            <label for>Password:</label>
-            <input type="password" v-model="password"/>
+            <label>Password:</label>
+          <b-input type="password" v-model="password"/>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary" v-on:click="signin()">Sign in</button>
+            <button type="submit" class="btn btn-primary" v-on:click="signIn">Sign in</button>
             <button type="button" class="btn btn-link">Register</button>
         </div>
     </form>
@@ -20,14 +20,12 @@
 
     export default {
         name: "Login",
-        data() {
-            return {
+        data: {
                 username: String,
-                password: String,
-            }
+                password: String
         },
         methods: {
-            signin: function() {
+            signIn: function() {
                 axios.post('/auth/signin', {
                     username: this.username, password: this.password
                 }).then( response => {
