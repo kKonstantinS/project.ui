@@ -20,9 +20,10 @@
 
     export default {
         name: "Login",
-        data: {
-                username: String,
-                password: String
+        data: function () {
+          return {
+            username: null,
+            password: null};
         },
         methods: {
             signIn: function() {
