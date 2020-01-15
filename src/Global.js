@@ -38,9 +38,10 @@ export default {
             return response;
           },
           error => {
-            if (error.status == 401) {
+            if (parseInt(error.response && error.response.status) === 401) {
               console.log('[GLOBAL] Unauthorized');
-              this.$router.push('login');
+              router.push('/login');
+              return Promise.reject(error);
             }
           }
         );

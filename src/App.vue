@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="container" style="">
     <b-navbar toggleable="lg" type="dark" variant="dark">
-      <b-navbar-brand href="/feed" style="padding-left: 1%">SocNetwork</b-navbar-brand>
+      <b-navbar-brand href="/feed" style="padding-left: 1%; box-sizing: border-box">App</b-navbar-brand>
 
       <b-collapse id="nav-collapse" is-nav>
 

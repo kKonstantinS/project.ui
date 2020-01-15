@@ -13,7 +13,7 @@ Vue.use(BootstrapVue);
 Vue.config.productionTip = false;
 
 axios.defaults.baseURL = 'http://localhost:9009';
-axios.defaults.headers['Authorization'] = localStorage.getItem('token');
+//axios.defaults.headers['Authorization'] = sessionStorage.getItem('token');
 
 /* eslint-disable no-new */
 new Vue({

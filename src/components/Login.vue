@@ -23,16 +23,17 @@
         data: function () {
           return {
             username: null,
-            password: null};
+            password: null
+          };
         },
         methods: {
             signIn: function() {
                 axios.post('/auth/signin', {
                     username: this.username, password: this.password
                 }).then( response => {
-                    localStorage.setItem('token', response.data.tokenType + " " + response.data.accessToken);
+                    sessionStorage.setItem('token', response.data.accessToken);
                 })
-                    .catch(reason => alert(reason))
+                    .catch(reason => alert(reason));
             }
         }
     }
