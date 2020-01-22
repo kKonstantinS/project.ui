@@ -31,9 +31,8 @@
                 axios.post('/auth/signin', {
                     username: this.username, password: this.password
                 }).then( response => {
-                    sessionStorage.setItem('token', response.data.accessToken);
-                })
-                    .catch(reason => alert(reason));
+                    this.$userDetails = response;
+                }).catch(reason => alert(reason));
             }
         }
     }

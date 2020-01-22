@@ -1,17 +1,15 @@
 
 import axios from 'axios'
-import router from 'vue-router'
 
 export default {
   // The install method will be called with the Vue constructor as
   // the first argument, along with possible options
   install (Vue) {
     // Add or modify global methods or properties.
+    Vue.prototype.$userDetails = null;
     Vue.logout = () => {
-      if (localStorage.getItem('token') != null) {
-        localStorage.removeItem('token');
-        console.log('token has been removed')
-      }
+      axios.get('/auth/clear-session');
+      this.$userDetails = null;
     };
     // Add a component or directive to your plugin, so it will be installed globally to your project.
     //Vue.component('component', Component);
@@ -34,14 +32,11 @@ export default {
       created() {
         axios.interceptors.response.use(
           response => {
-            console.log("[GLOBAL] response from server " + response);
             return response;
           },
           error => {
             if (parseInt(error.response && error.response.status) === 401) {
-              console.log('[GLOBAL] Unauthorized');
-              router.push('/login');
-              return Promise.reject(error);
+              this.router.push('/login');
             }
           }
         );
