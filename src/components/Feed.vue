@@ -10,12 +10,8 @@
 </template>
 
 <script>
-    import Vue from 'vue'
-    import axios from 'axios'
-    import router from 'vue-router'
-    import global from '../Global.js'
 
-    Vue.use(global);
+    import axios from 'axios'
 
     export default {
       name: "Feed",
@@ -31,7 +27,7 @@
         refresh: function () {
           axios.get('/api/users/all').then(
             response => (this.users = response)
-          ).catch(e => console.log(e))
+          );
         }
       },
     }

@@ -4,8 +4,6 @@ import Feed from '../components/Feed'
 import Login from '../components/Login'
 import Profile from '../components/Profile'
 
-Vue.use(Router);
-
 export default new Router({
   routes: [
     {
@@ -26,3 +24,5 @@ export default new Router({
   ],
   mode: 'history'
 })
+
+Vue.use(Router);

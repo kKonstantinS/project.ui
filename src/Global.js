@@ -1,5 +1,4 @@
 
-import axios from 'axios'
 
 export default {
   // The install method will be called with the Vue constructor as
@@ -8,7 +7,7 @@ export default {
     // Add or modify global methods or properties.
     Vue.prototype.$userDetails = null;
     Vue.logout = () => {
-      axios.get('/auth/clear-session');
+      this.$axios.get('/auth/clear-session');
       this.$userDetails = null;
     };
     // Add a component or directive to your plugin, so it will be installed globally to your project.
@@ -27,20 +26,25 @@ export default {
       // Anything added to a mixin will be injected into all components.
       // In this case, the mounted() method runs when the component is added to the DOM.
       mounted() {
-        console.log('Mounted!');
+        //console.log('Mounted!');
       },
       created() {
         axios.interceptors.response.use(
           response => {
+            if (response==null) {
+              this.$router.push('login');
+            }
             return response;
           },
           error => {
-            if (parseInt(error.response && error.response.status) === 401) {
-              this.router.push('/login');
+            if (error.response.status === 401) {
+              console.log(error.response.status);
+              //this.$router.go('/login');
+              this.$router.push({ name: 'Login' });
             }
           }
         );
-      }
+      },
     });
   }
 }

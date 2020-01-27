@@ -42,18 +42,17 @@
   import 'bootstrap/dist/css/bootstrap.css'
   import 'bootstrap-vue/dist/bootstrap-vue.css'
   import axios from 'axios'
-  //import router from 'vue-router'
 
   export default {
     name: 'app',
     methods: {
       logout() {
         axios.get('/auth/clear-session').then( r => {
-          this.router.push('/login');
+          this.$router.go('/login');
         });
       },
       isAuthenticated() {
-        return localStorage.getItem('token') != null;
+        return true;
       }
     }
   }

@@ -6,14 +6,16 @@ import router from './router'
 import axios from 'axios'
 import BootstrapVue from 'bootstrap-vue'
 import globalPlugin from './Global.js'
+import global from './Global.js'
 
 Vue.use(globalPlugin);
 Vue.use(BootstrapVue);
+Vue.use(axios);
+Vue.use(global);
 
 Vue.config.productionTip = false;
 
 axios.defaults.baseURL = 'http://localhost:9009';
-//axios.defaults.headers['Authorization'] = sessionStorage.getItem('token');
 
 /* eslint-disable no-new */
 new Vue({
